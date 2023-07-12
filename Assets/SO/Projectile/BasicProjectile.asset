@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b5cfa47681c88f4abdde0cc63900c53, type: 3}
+  m_Name: BasicProjectile
+  m_EditorClassIdentifier: 
+  Id: projectile_basic
+  restParent: {fileID: 0}
+  defaultCapacity: 100
+  maxCapacity: 1000
+  prefab: {fileID: 7153872875985116884, guid: 516ecbd7b75ceca4f87da9a508825b95, type: 3}
