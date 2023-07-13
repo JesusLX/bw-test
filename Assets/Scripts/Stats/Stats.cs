@@ -32,17 +32,17 @@ public class Stats : ScriptableObject {
     [Serializable]
     public struct AttackST {
 
+        [SerializeField] private float damage;
         [SerializeField] private float rafaga;
         [SerializeField] private float rafagaCountdown;
         [SerializeField] private float shootCountdown;
         [SerializeField] private Vector3 shootMargenError;
 
+        public float Damage { get => damage; set => damage = value; }
         public float RafagaCountdown { get => rafagaCountdown; set => rafagaCountdown = value; }
         public float Rafaga { get => rafaga; set => rafaga = value; }
         public float ShootCountdown { get => shootCountdown; set => shootCountdown = value; }
         public Vector3 ShootMargenError { get => shootMargenError; set => shootMargenError = value; }
-
-
 
         public Vector3 ApplyShootMargenError(Vector3 positionToApply) {
             var rX = UnityEngine.Random.Range(-this.ShootMargenError.x, this.ShootMargenError.x);
@@ -56,6 +56,7 @@ public class Stats : ScriptableObject {
             return errorPoint;
         }
         public static Stats.AttackST operator +(Stats.AttackST a, Stats.AttackST b) {
+            a.Damage += b.Damage;
             a.Rafaga += b.Rafaga;
             a.RafagaCountdown += b.RafagaCountdown;
             a.ShootCountdown += b.ShootCountdown;

@@ -44,7 +44,7 @@ public class Gun : MonoBehaviour, IWeapon {
     }
     public void Shoot() {
         recoil.Fire();
-        ProjectileManager.instance.Play(projectileKey, null, stats.ApplyShootMargenError(shootPosition.position), shootPosition.rotation);
+        ProjectileManager.instance.Play(projectileKey, null, stats.ApplyShootMargenError(shootPosition.position), shootPosition.rotation, stats.Damage);
 
     }
     private IEnumerator ShootCor() {

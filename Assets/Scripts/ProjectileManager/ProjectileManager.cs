@@ -5,7 +5,7 @@ using bw_test.Projectile;
 
 namespace bw_test.ProjectilePool {
     public partial class ProjectileManager : Singleton<ProjectileManager> {
-        public List<ProjectilePool> pSPools;
+        public List<ProjectilePool> projectilePools;
 
         [Header("Test")]
         public string testId;
@@ -13,7 +13,7 @@ namespace bw_test.ProjectilePool {
         private Coroutine testMultishootCor;
 
         private void Start() {
-            pSPools ??= new();
+            projectilePools ??= new();
             if (testMultishootAtStart) {
                 testMultishootCor = StartCoroutine(Multishot());
             }
@@ -34,14 +34,14 @@ namespace bw_test.ProjectilePool {
                 testId,
                 null ,
                 transform.position, 
-                transform.rotation);
+                transform.rotation,0);
         }
         /// <summary>
         /// Test Function "Play" using this manager transform as parent and this.testId to select the Projectile to play
         /// </summary>
         [ContextMenu("Test/PlayAttached")]
         public void TestPlayAttached() {
-            Play(testId, gameObject.transform,Vector3.zero,Quaternion.identity);
+            Play(testId, gameObject.transform,Vector3.zero,Quaternion.identity,0);
         }
 
         /// <summary>
@@ -52,18 +52,18 @@ namespace bw_test.ProjectilePool {
         /// <param name="position">Vector3 where to position and Play the Projectile</param>
         /// <param name="rotation">Rotation of the Projectile</param>
         /// <returns>The Projectile invoked</returns>
-        public IProjectile Play(string poolId, Transform parent, Vector3 position, Quaternion rotation) {
+        public IProjectile Play(string poolId, Transform parent, Vector3 position, Quaternion rotation, float damage) {
             if(position == null) {
                 position = Vector3.zero;
             }
             ProjectilePool pool = FindPool(poolId);
             var ps = pool.Play(parent, position, rotation);
-
+            ps.GetComponent<IProjectile>().SetDamage(damage);
             return ps.GetComponent<IProjectile>();
         }
 
         private ProjectilePool FindPool(string poolId) {
-            ProjectilePool pool = pSPools.Find(pool => pool.Id == poolId);
+            ProjectilePool pool = projectilePools.Find(pool => pool.Id == poolId);
             return pool;
         }
     }

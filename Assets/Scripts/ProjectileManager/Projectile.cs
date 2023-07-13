@@ -13,6 +13,7 @@ namespace bw_test.Projectile {
         private float maxLifeTime = 10f;
         private Countdown _countdown;
         private Coroutine _coroutineMoveForward;
+        private float damage;
 
         private IEnumerator MoveForward() {
             while (true) {
@@ -21,7 +22,11 @@ namespace bw_test.Projectile {
             }
         }
         private void OnTriggerEnter(Collider other) {
+            ICharacter target;
+            if (other.TryGetComponent<ICharacter>(out target)) {
             Debug.Log("Objeto colisionado: " + other.gameObject.name);
+                target.Hit(damage);
+            }
             Kill();
         }
        
@@ -42,6 +47,10 @@ namespace bw_test.Projectile {
             _countdown.OnTimeOut -= (TimeOut);
             base.Kill();
 
+        }
+
+        public void SetDamage(float damage) {
+            this.damage = damage;
         }
     }
 }

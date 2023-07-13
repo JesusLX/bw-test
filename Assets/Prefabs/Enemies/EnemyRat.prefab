@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7118928354096317635}
   - component: {fileID: 1661205570674628134}
   - component: {fileID: 5371771678386875400}
+  - component: {fileID: -6145229860850687833}
   m_Layer: 7
   m_Name: EnemyRat
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7118928354096317645}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -47,7 +48,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86fb128f1e2c48242aebcf9dc2ee8362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 2
+  DiePSKey: rat_die_explosion
+  basicStats: {fileID: 11400000, guid: 86afae915f92c564584876ebcfd94c4a, type: 2}
 --- !u!136 &1661205570674628134
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -78,6 +80,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-6145229860850687833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7118928354096317645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89f1269fe611e114db5dc1dbc35f30b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 2
 --- !u!1001 &7118928353685190973
 PrefabInstance:
   m_ObjectHideFlags: 0
