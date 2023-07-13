@@ -9,6 +9,7 @@ public interface ICharacter {
     public void Init();
 
     public void AddWeapon(IWeapon weapon);
-    void Die();
-     void Hit(float damage);
+    void Die(ICharacter assasing);
+     void Hit(float damage, ICharacter damagedBy);
+    void AddExp(float experience);
 }

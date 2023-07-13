@@ -3,45 +3,50 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Player : MonoBehaviour, ICharacter
-{
-    public List<IWeapon> weapons;
-    [SerializeField]private Stats stats;
+public class Player : MonoBehaviour, ICharacter {
+    public HashSet<IWeapon> weapons;
+    [SerializeField] private Stats basicStats;
+    private Stats currentStats;
 
-    public Stats Stats { get => stats; set => stats = value; }
-    private UnityEvent<Stats> onStatsChanged;
-    public UnityEvent<Stats> OnStatsChanged { get { return onStatsChanged; } }
-    public Transform Transform => this.transform;
+    public Stats Stats { get => currentStats; set => currentStats = value; }
+    private UnityEvent<Stats> onStatsChanged = new UnityEvent<Stats>();
+    public UnityEvent<Stats> OnStatsChanged => onStatsChanged;
+    public Transform Transform => transform;
 
     private void Awake() {
         onStatsChanged = new UnityEvent<Stats>();
     }
+
     private void Start() {
-        Stats = new Stats() + Stats;
-        weapons = new();
-        foreach (var weapon in GetComponentsInChildren<IWeapon>()) {
-            AddWeapon(weapon);
+        Init();
+    }
+
+    public void Init() {
+        Stats = new Stats() + basicStats;
+        weapons = new HashSet<IWeapon>(GetComponentsInChildren<IWeapon>());
+        foreach (var weapon in weapons) {
+            weapon.Init(this);
         }
         GetComponent<IMovement>().Init(this);
     }
-    public void Init() {
-    }
+
     public void AddWeapon(IWeapon weapon) {
         weapon.Init(this);
         weapons.Add(weapon);
-
     }
 
-    public void Hit(float damage) {
+    public void Hit(float damage, ICharacter assasing) {
         Stats.Health.CurrentHealth -= damage;
-        if(Stats.Health.CurrentHealth == 0 ) {
-            Die();
+        if (Stats.Health.CurrentHealth <= 0) {
+            Die(assasing);
         }
     }
 
-    public void Die() {
-        Console.WriteLine("MORIO");
+    public void Die(ICharacter assasing) {
+        Debug.Log("MURIO");
     }
 
- 
+    public void AddExp(float experience) {
+        Stats.Level.Experience += experience;
+    }
 }

@@ -43,7 +43,9 @@ public class Countdown {
             }
             yield return new WaitForEndOfFrame();
         }
-        OnTimeOut?.Invoke();
+        if(remainingTime <= 0) {
+            OnTimeOut?.Invoke();
+        }
     }
 
     public bool IsCountingDown() {

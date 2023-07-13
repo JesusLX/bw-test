@@ -14,6 +14,7 @@ namespace bw_test.Projectile {
         private Countdown _countdown;
         private Coroutine _coroutineMoveForward;
         private float damage;
+        ICharacter shooter;
 
         private IEnumerator MoveForward() {
             while (true) {
@@ -24,8 +25,7 @@ namespace bw_test.Projectile {
         private void OnTriggerEnter(Collider other) {
             ICharacter target;
             if (other.TryGetComponent<ICharacter>(out target)) {
-            Debug.Log("Objeto colisionado: " + other.gameObject.name);
-                target.Hit(damage);
+                target.Hit(damage,shooter);
             }
             Kill();
         }
@@ -51,6 +51,10 @@ namespace bw_test.Projectile {
 
         public void SetDamage(float damage) {
             this.damage = damage;
+        }
+
+        public void SetShooter(ICharacter shooter) {
+            this.shooter = shooter;
         }
     }
 }

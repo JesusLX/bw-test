@@ -65,14 +65,29 @@ public class Stats : ScriptableObject {
         }
     }
 
+    [Serializable]
+    public struct LevelST {
+
+        [SerializeField] private float level;
+        [SerializeField] private float experience;
+        public float Level { get => level; set => level = value; }
+        public float Experience { get => experience; set => experience = value; }
+        public static Stats.LevelST operator +(Stats.LevelST a, Stats.LevelST b) {
+            a.level += b.level;
+            a.experience += b.experience;
+            return a;
+        }
+    }
     public Stats.HealthST Health;
     public Stats.MovementST Movement;
     public Stats.AttackST Attack;
+    public Stats.LevelST Level;
 
     public static Stats operator +(Stats a, Stats b) {
         a.Health += b.Health;
         a.Movement += b.Movement;
         a.Attack += b.Attack;
+        a.Level += b.Level;
         return a;
     }
 }

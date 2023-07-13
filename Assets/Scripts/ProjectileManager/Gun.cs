@@ -16,6 +16,8 @@ public class Gun : MonoBehaviour, IWeapon {
 
     private ShakeObject recoil;
 
+    private ICharacter shooter;
+
     private void Start() {
         mouseInput = GetComponent<IShootInput>();
         recoil = GetComponent<ShakeObject>();
@@ -26,8 +28,9 @@ public class Gun : MonoBehaviour, IWeapon {
     }
 
     public void Init(Player player) {
-         player.OnStatsChanged.AddListener(UpdateStats);
+        player.OnStatsChanged.AddListener(UpdateStats);
         UpdateStats(player.Stats);
+        shooter = player;
 
     }
     public void UpdateStats(Stats stats) {
@@ -36,16 +39,16 @@ public class Gun : MonoBehaviour, IWeapon {
 
     public bool TryAttack() {
         if (mouseInput.ShootButtonPressed()) {
-            if(shootCor == null) {
-                shootCor = StartCoroutine(ShootCor()); 
+            if (shootCor == null) {
+                shootCor = StartCoroutine(ShootCor());
             }
         }
         return true;
     }
     public void Shoot() {
         recoil.Fire();
-        ProjectileManager.instance.Play(projectileKey, null, stats.ApplyShootMargenError(shootPosition.position), shootPosition.rotation, stats.Damage);
-
+        var projectile = ProjectileManager.instance.Play(projectileKey, null, stats.ApplyShootMargenError(shootPosition.position), shootPosition.rotation, stats.Damage);
+        projectile.SetShooter(shooter);
     }
     private IEnumerator ShootCor() {
         if (canShoot) {

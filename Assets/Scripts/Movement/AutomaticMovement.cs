@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -21,21 +22,15 @@ public class AutomaticMovement : MonoBehaviour, IMovement {
     }
 
     public void TryMove() {
-        if(canMove && player != null) {
+        if (canMove && player != null) {
             LookAt(player.Transform);
-            // Calcula la dirección hacia el objetivo
             Vector3 direction = (player.Transform.position - transform.position).normalized;
 
-            // Calcula la distancia entre el objeto y el objetivo
             float distance = Vector3.Distance(transform.position, player.Transform.position);
+            if (distance > 1) {
 
-            // Mueve el objeto hacia el objetivo con la velocidad especificada
-            transform.position += direction * stats.MoveSpeed * Time.deltaTime;
-
-            // Verifica si ha llegado al objetivo
-            if (distance <= stats.MoveSpeed * Time.deltaTime) {
-                // El objeto ha llegado al objetivo
-                transform.position = player.Transform.position;
+                transform.position += direction * stats.MoveSpeed * Time.deltaTime;
+            } else if (distance <= 1) {
                 Debug.Log($"Objeto ha llegado al objetivo. {distance}");
             }
         }

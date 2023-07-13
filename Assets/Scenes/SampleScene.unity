@@ -1710,6 +1710,7 @@ GameObject:
   m_Component:
   - component: {fileID: 599548834}
   - component: {fileID: 599548833}
+  - component: {fileID: 599548835}
   m_Layer: 0
   m_Name: EnemyManager
   m_TagString: Untagged
@@ -1751,6 +1752,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &599548835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599548832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff16f07d946226643b3ba7a38090f43c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rajdomTimeBtSpawns: {x: 1, y: 5}
+  spawnZoneStart: {x: -80, y: 0, z: -80}
+  spawnZoneEnd: {x: 80, y: 2, z: 80}
 --- !u!1001 &608665002
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2246,7 +2262,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3189332861363261692, guid: 8da1d24c40240c7489fd395329ae082d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -78.95609
+      value: -88.2
       objectReference: {fileID: 0}
     - target: {fileID: 3189332861363261692, guid: 8da1d24c40240c7489fd395329ae082d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2254,7 +2270,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3189332861363261692, guid: 8da1d24c40240c7489fd395329ae082d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -70.868126
+      value: -85.6
       objectReference: {fileID: 0}
     - target: {fileID: 3189332861363261692, guid: 8da1d24c40240c7489fd395329ae082d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4639,6 +4655,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6387605626300473874, guid: b603407dcd762554b9719d42e1847611, type: 3}
       propertyPath: stats
+      value: 
+      objectReference: {fileID: 11400000, guid: 07b723fc326495147b50f1e6e4ad172a, type: 2}
+    - target: {fileID: 6387605626300473874, guid: b603407dcd762554b9719d42e1847611, type: 3}
+      propertyPath: basicStats
       value: 
       objectReference: {fileID: 11400000, guid: 07b723fc326495147b50f1e6e4ad172a, type: 2}
     - target: {fileID: 6387605626300473878, guid: b603407dcd762554b9719d42e1847611, type: 3}

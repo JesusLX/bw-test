@@ -41,19 +41,25 @@ public class Enemy : PoolItem, ICharacter {
     public void AddWeapon(IWeapon weapon) {
     }
 
-    public void Hit(float damage) {
+    public void Hit(float damage, ICharacter damagedTo) {
         Stats.Health.CurrentHealth -= damage;
         if (Stats.Health.CurrentHealth <= 0) {
-            Die();
+            Die(damagedTo);
         }
         Debug.Log(Stats.Health.CurrentHealth);
 
     }
 
-    public void Die() {
+    public void Die(ICharacter assasing) {
         PSManager.instance.Play(DiePSKey, null, transform.position, Quaternion.identity);
-
+        assasing.AddExp(
+            Stats.Level.Experience
+            );
         Debug.Log("MORIO");
         Kill();
+    }
+
+    public void AddExp(float experience) {
+        Stats.Level.Experience += experience;
     }
 }
