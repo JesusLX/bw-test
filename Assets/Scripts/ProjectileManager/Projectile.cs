@@ -20,14 +20,11 @@ namespace bw_test.Projectile {
                 yield return null;
             }
         }
-
-        private void OnCollisionEnter(Collision collision) {
-            // Realizar acciones adicionales al colisionar con otro objeto (opcional)
-            Debug.Log("Objeto colisionado: " + collision.gameObject.name);
-
-            // Detener la corrutina de movimiento
-            StopCoroutine(_coroutineMoveForward);
+        private void OnTriggerEnter(Collider other) {
+            Debug.Log("Objeto colisionado: " + other.gameObject.name);
+            Kill();
         }
+       
         public virtual void TimeOut() {
             Kill();
         }
@@ -39,7 +36,8 @@ namespace bw_test.Projectile {
             StartCoroutine(_countdown.StartCountdown());
         }
         public override void Kill() {
-            //PSManager.instance.Play(ExplosionPSKey, null, transform.position, Quaternion.identity);
+            PSManager.instance.Play(ExplosionPSKey, null, transform.position, Quaternion.identity);
+            StopCoroutine(_coroutineMoveForward);
             _countdown.StopCountdown();
             _countdown.OnTimeOut -= (TimeOut);
             base.Kill();

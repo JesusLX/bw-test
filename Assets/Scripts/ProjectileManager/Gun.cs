@@ -10,12 +10,15 @@ public class Gun : MonoBehaviour, IWeapon {
     public string projectileKey;
     public Transform shootPosition;
     public bool canShoot = true;
+    public Stats.AttackST stats;
 
-    private Player player;
     private Coroutine shootCor;
+
+    private ShakeObject recoil;
 
     private void Start() {
         mouseInput = GetComponent<IShootInput>();
+        recoil = GetComponent<ShakeObject>();
     }
 
     private void Update() {
@@ -23,7 +26,12 @@ public class Gun : MonoBehaviour, IWeapon {
     }
 
     public void Init(Player player) {
-        this.player = player;
+         player.OnStatsChanged.AddListener(UpdateStats);
+        UpdateStats(player.Stats);
+
+    }
+    public void UpdateStats(Stats stats) {
+        this.stats = stats.Attack;
     }
 
     public bool TryAttack() {
@@ -35,22 +43,23 @@ public class Gun : MonoBehaviour, IWeapon {
         return true;
     }
     public void Shoot() {
-        ProjectileManager.instance.Play(projectileKey, null, player.stats.ApplyShootMargenError(shootPosition.position), shootPosition.rotation);
+        recoil.Fire();
+        ProjectileManager.instance.Play(projectileKey, null, stats.ApplyShootMargenError(shootPosition.position), shootPosition.rotation);
 
     }
     private IEnumerator ShootCor() {
         if (canShoot) {
-            for (int i = 0; i < player.stats.Rafaga; i++) {
+            for (int i = 0; i < stats.Rafaga; i++) {
                 if (canShoot) {
                     Shoot();
                 } else {
                     break;
                 }
-                if (i != player.stats.Rafaga - 1) {
-                    yield return new WaitForSeconds(player.stats.RafagaCountdown);
+                if (i != stats.Rafaga - 1) {
+                    yield return new WaitForSeconds(stats.RafagaCountdown);
                 }
             }
-            yield return new WaitForSeconds(player.stats.ShootCountdown);
+            yield return new WaitForSeconds(stats.ShootCountdown);
         }
         shootCor = null;
 

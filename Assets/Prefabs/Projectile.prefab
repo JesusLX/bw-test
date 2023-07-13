@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3253638752399481256}
   - component: {fileID: 9207555185088387263}
   - component: {fileID: 3185626083236345916}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: GFX (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,8 +116,8 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 15
-      minScalar: 15
+      scalar: 5
+      minScalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -285,7 +285,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1
+      scalar: 0.5
       minScalar: 0.2
       maxCurve:
         serializedVersion: 2
@@ -4899,7 +4899,7 @@ GameObject:
   - component: {fileID: 7153872875985116881}
   - component: {fileID: 3657767540716585756}
   - component: {fileID: 8099468173033812806}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4948,7 +4948,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bd218e9284962b49ab244db3d019e2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ExplosionPSKey: 
+  ExplosionPSKey: mini_explosion
   moveSpeed: 10
 --- !u!1 &7214456771754438050
 GameObject:
@@ -4961,7 +4961,7 @@ GameObject:
   - component: {fileID: 1966344645356031397}
   - component: {fileID: 9172813537634839462}
   - component: {fileID: 4639363512132658180}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5069,7 +5069,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 1
-      minScalar: 1
+      minScalar: 0.0001
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -5237,7 +5237,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1.2
+      scalar: 0.5
       minScalar: 0.2
       maxCurve:
         serializedVersion: 2
@@ -9956,8 +9956,8 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 3
-      minScalar: 2
+      scalar: 2
+      minScalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -10125,7 +10125,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1.5
+      scalar: 0.8
       minScalar: 0.25
       maxCurve:
         serializedVersion: 2
@@ -14674,7 +14674,7 @@ GameObject:
   - component: {fileID: 2803609761685191570}
   - component: {fileID: 352087768343898760}
   - component: {fileID: 6668089600018922625}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -1,16 +1,22 @@
 using UnityEngine;
+using UnityEngine.Events;
 using static UnityEngine.GraphicsBuffer;
 
-public class Enemy : MonoBehaviour
-{
+public class Enemy : MonoBehaviour, ICharacter {
     public float rotationSpeed = 2f;
-    // Start is called before the first frame update
+    [SerializeField]private Stats basicStats;
+
+    public Stats Stats { get => basicStats; set => basicStats = value; }
+
+    public UnityEvent<Stats> OnStatsChanged { get; }
+
+
+
     void Start()
     {
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         Player player = FindObjectOfType<Player>();
@@ -28,5 +34,8 @@ public class Enemy : MonoBehaviour
 
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
+    }
+
+    public void AddWeapon(IWeapon weapon) {
     }
 }
