@@ -9,6 +9,7 @@ public class Player : MonoBehaviour, ICharacter {
     private Stats currentStats;
 
     public Stats Stats { get => currentStats; set => currentStats = value; }
+    public UnityEvent<Stats.LevelST> OnExperienceChanged = new UnityEvent<Stats.LevelST>();
     private UnityEvent<Stats> onStatsChanged = new UnityEvent<Stats>();
     public UnityEvent<Stats> OnStatsChanged => onStatsChanged;
     public Transform Transform => transform;
@@ -48,5 +49,6 @@ public class Player : MonoBehaviour, ICharacter {
 
     public void AddExp(float experience) {
         Stats.Level.Experience += experience;
+        OnExperienceChanged?.Invoke(Stats.Level);
     }
 }

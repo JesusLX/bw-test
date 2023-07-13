@@ -4,16 +4,21 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PowerUpBasic : ScriptableObject, IPowerUp
-{
+[CreateAssetMenu(fileName = "New PowerUpBasic", menuName = "bw_test/PowerUps/Basic")]
+public class PowerUpBasic : ScriptableObject, IPowerUp {
     public Stats stat;
 
     public Sprite sprite;
-    public string text;
+    public string description;
+    public bool isReutilizable;
 
-    public void Init(Image image, TextMeshProUGUI tmpText) {
-        image.sprite = sprite;
-        tmpText.text = text;
+    public Sprite Image { get => sprite; set => sprite = value; }
+    public string Description { get => description; set => description = value; }
+
+    public bool IsReutilizable => isReutilizable;
+
+    public void Init() {
+       
     }
 
     public Stats ApplyToStat(Stats statToApply) {
