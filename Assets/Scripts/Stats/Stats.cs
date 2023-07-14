@@ -13,6 +13,7 @@ public class Stats : ScriptableObject {
         public static Stats.HealthST operator +(Stats.HealthST a, Stats.HealthST b) {
             a.MaxHealth += b.MaxHealth;
             a.CurrentHealth += b.CurrentHealth;
+            if(a.currentHealth > a.MaxHealth) a.CurrentHealth = a.MaxHealth;
             return a;
         }
     }

@@ -14,7 +14,6 @@ public class LevelUpScreen : MonoBehaviour, IUiScreen {
     }
 
     public void Hide() {
-        TimeManager.instance.RestorePlayTime();
         gameObject.SetActive(false);
     }
     #endregion

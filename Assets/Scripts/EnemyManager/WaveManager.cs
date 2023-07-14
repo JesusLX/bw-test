@@ -20,7 +20,10 @@ public class WaveManager : MonoBehaviour, ITimeAffected
         AttachTimeEvents();
     }
     private void OnDisable() {
-        FindObjectOfType<LevelManager>().OnLevelUp.RemoveListener(LevelUp);
+        var levelManager = FindObjectOfType<LevelManager>();
+        if (levelManager != null) {
+            levelManager.OnLevelUp.RemoveListener(LevelUp);
+        }
         DetachTimeEvents();
     }
     [ContextMenu("Test/Init")]

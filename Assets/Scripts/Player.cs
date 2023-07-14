@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,9 @@ public class Player : MonoBehaviour, ICharacter, ITimeAffected {
     public UnityEvent<Stats.LevelST> OnExperienceChanged = new UnityEvent<Stats.LevelST>();
     private UnityEvent<Stats> onStatsChanged = new UnityEvent<Stats>();
     public UnityEvent<Stats> OnStatsChanged => onStatsChanged;
+
+    public UnityEvent OnEnemyKilled = new();
+    public UnityEvent OnDie = new();
     public Transform Transform => transform;
 
     private void OnEnable() {
@@ -28,7 +32,8 @@ public class Player : MonoBehaviour, ICharacter, ITimeAffected {
     }
 
     public void Init() {
-        Stats = ScriptableObject.CreateInstance<Stats>() + basicStats;
+        Stats = ScriptableObject.CreateInstance<Stats>() ;
+        UpdateStats(basicStats);
         weapons = new HashSet<IWeapon>(GetComponentsInChildren<IWeapon>());
         foreach (var weapon in weapons) {
             AddWeapon(weapon);
@@ -47,13 +52,18 @@ public class Player : MonoBehaviour, ICharacter, ITimeAffected {
         if (Stats.Health.CurrentHealth <= 0) {
             Die(assasing);
         }
+        OnStatsChanged?.Invoke(Stats);
     }
 
     public void Die(ICharacter assasing) {
+        GameManager.instance.GameOver();
+        transform.DORotate( new Vector3(0, 0, 90f),1f);
+        OnDie?.Invoke();
         Debug.Log("MURIO");
     }
 
     public void AddExp(float experience) {
+        OnEnemyKilled?.Invoke();
         Stats.Level.Experience += experience;
         OnExperienceChanged?.Invoke(Stats.Level);
     }
@@ -63,8 +73,6 @@ public class Player : MonoBehaviour, ICharacter, ITimeAffected {
     }
 
     public void UpdateStats(Stats stats) {
-        Debug.Log(stats);
-        Debug.Log( Stats);
         this.Stats += stats;
         OnStatsChanged?.Invoke(this.Stats);
     }

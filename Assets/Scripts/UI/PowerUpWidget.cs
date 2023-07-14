@@ -40,6 +40,6 @@ public class PowerUpWidget : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public void OnSelected() {
         PSManager.instance.Play(selectedPSKey, FindObjectOfType<Camera>().transform, Vector3.forward*2, Quaternion.identity);
         FindObjectOfType<Player>().AddPowerUp(powerUp);
-        UIManager.instance.Hide(UIManager.instance.LevelUpPanel);
+        GameManager.instance.Restore();
     }
 }

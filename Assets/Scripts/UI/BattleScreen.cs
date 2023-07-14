@@ -1,19 +1,23 @@
 using UnityEngine;
 
-public class BattleScreen : MonoBehaviour,IUiScreen
-{
-    // Start is called before the first frame update
-    void Start()
-    {
+public class BattleScreen : MonoBehaviour, IUiScreen {
 
+    public HPWidget hpWidget;
+    public CountdownWidget countdownWidget;
+
+ 
+    public void Init() {
+        GameManager.instance.OnGameStart.AddListener(Init);
+        hpWidget.Init();
+        countdownWidget.StartCountdown();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
+    public void Show() {
+        gameObject.SetActive(true);
     }
 
-    public void Show() => gameObject.SetActive(true);
-    public void Hide() => gameObject.SetActive(false);
+    public void Hide() {
+        countdownWidget.StopCounting();
+        gameObject.SetActive(false);
+    }
 }

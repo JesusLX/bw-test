@@ -24,7 +24,6 @@ public class Gun : Weapon {
 
         if (actionInput.ShootButtonPressed()) {
             if (attackCor == null) {
-                Debug.Log("ATAAAACA");
                 attackCor = StartCoroutine(AttackCor());
             }
         }
@@ -37,7 +36,6 @@ public class Gun : Weapon {
         projectile.SetShooter(attacker);
     }
     internal override IEnumerator AttackCor() {
-            Debug.Log("Piuem "+stats.Rafaga+" "+ canAttack);
         if (canAttack) {
             for (int i = 0; i < stats.Rafaga; i++) {
                 if (canAttack) {
