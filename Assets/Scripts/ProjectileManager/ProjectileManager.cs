@@ -52,14 +52,14 @@ namespace bw_test.ProjectilePool {
         /// <param name="position">Vector3 where to position and Play the Projectile</param>
         /// <param name="rotation">Rotation of the Projectile</param>
         /// <returns>The Projectile invoked</returns>
-        public IProjectile Play(string poolId, Transform parent, Vector3 position, Quaternion rotation, float damage) {
+        public IMunition Play(string poolId, Transform parent, Vector3 position, Quaternion rotation, float damage) {
             if(position == null) {
                 position = Vector3.zero;
             }
             ProjectilePool pool = FindPool(poolId);
             var ps = pool.Play(parent, position, rotation);
-            ps.GetComponent<IProjectile>().SetDamage(damage);
-            return ps.GetComponent<IProjectile>();
+            ps.GetComponent<IMunition>().SetDamage(damage);
+            return ps.GetComponent<IMunition>();
         }
 
         private ProjectilePool FindPool(string poolId) {

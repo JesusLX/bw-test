@@ -22,7 +22,7 @@ namespace bw_test.ProjectilePool {
         }
 
         public PoolItem ShootProjectile(PoolItem poolItem) {
-            poolItem.GetComponent<IProjectile>().Shoot();
+            poolItem.GetComponent<IMunition>().Shoot();
             return poolItem;
         }
     }

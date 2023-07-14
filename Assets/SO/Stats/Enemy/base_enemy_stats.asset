@@ -24,3 +24,6 @@ MonoBehaviour:
     rafagaCountdown: 0.1
     shootCountdown: 1
     shootMargenError: {x: 0.2, y: 0.2, z: 0.2}
+  Level:
+    level: 0
+    experience: 3

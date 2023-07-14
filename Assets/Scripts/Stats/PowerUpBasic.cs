@@ -6,23 +6,27 @@ using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "New PowerUpBasic", menuName = "bw_test/PowerUps/Basic")]
 public class PowerUpBasic : ScriptableObject, IPowerUp {
-    public Stats stat;
+    [SerializeField] private Stats stats;
 
-    public Sprite sprite;
-    public string description;
-    public bool isReutilizable;
+    [SerializeField] private Sprite sprite;
+    [SerializeField] private string title;
+    [SerializeField] private string description;
+    [SerializeField] private bool isReutilizable;
 
     public Sprite Image { get => sprite; set => sprite = value; }
+    public string Title { get => title; set => title = value; }
     public string Description { get => description; set => description = value; }
 
     public bool IsReutilizable => isReutilizable;
+
+    public Stats Stats { get => stats; set => stats = value; }
 
     public void Init() {
        
     }
 
     public Stats ApplyToStat(Stats statToApply) {
-        return statToApply + this.stat;
+        return statToApply + this.Stats;
     }
 
 }

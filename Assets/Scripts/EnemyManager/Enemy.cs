@@ -8,6 +8,7 @@ using UnityEngine.Events;
 using static UnityEngine.GraphicsBuffer;
 
 public class Enemy : PoolItem, ICharacter {
+    public string SpawnPSKey;
     public string DiePSKey;
 
 
@@ -32,11 +33,10 @@ public class Enemy : PoolItem, ICharacter {
         movementController = GetComponent<IMovement>();
 
         movementController.Init(FindObjectOfType<Player>());
-        Stats = new Stats() + basicStats;
+        Stats = ScriptableObject.CreateInstance<Stats>() + basicStats;
+        PSManager.instance.Play(SpawnPSKey, null, transform.position, Quaternion.LookRotation(Vector3.up));
 
     }
-
-
 
     public void AddWeapon(IWeapon weapon) {
     }
@@ -61,5 +61,14 @@ public class Enemy : PoolItem, ICharacter {
 
     public void AddExp(float experience) {
         Stats.Level.Experience += experience;
+    }
+
+    public void AddPowerUp(IPowerUp powerUp) {
+        
+    }
+
+    public void UpdateStats(Stats stats) {
+        this.Stats += stats;
+        OnStatsChanged?.Invoke(this.Stats);
     }
 }

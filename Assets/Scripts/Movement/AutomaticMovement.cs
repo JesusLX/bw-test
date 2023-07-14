@@ -2,34 +2,47 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using static UnityEngine.GraphicsBuffer;
 
-public class AutomaticMovement : MonoBehaviour, IMovement {
+public class AutomaticMovement : Movement {
 
-    private Stats.MovementST stats;
-    private bool canMove = false;
     private ICharacter player;
     public float rotationSpeed = 2f;
-
+    private bool isTooClose;
+    public UnityEvent OnPlayerTooClose;
+    private void OnEnable() {
+        StartCoroutine(TooCloseAlert());
+    }
+    private void OnDisable() {
+        StopCoroutine(TooCloseAlert());
+    }
     void Update() {
         TryMove();
     }
 
-    public void Init(ICharacter player) {
+    public override void Init(ICharacter player) {
         stats = player.Stats.Movement;
         this.player = player;
         UpdateCanMove(true);
     }
-
-    public void TryMove() {
+    private IEnumerator TooCloseAlert() {
+        while (true) {
+            if (isTooClose) {
+                OnPlayerTooClose?.Invoke();
+                yield return null;
+            } else {
+                yield return null;
+            }
+        }
+    }
+    public override void TryMove() {
         if (canMove && player != null) {
             LookAt(player.Transform);
-            Vector3 direction = (player.Transform.position - transform.position).normalized;
 
             float distance = Vector3.Distance(transform.position, player.Transform.position);
             if (distance > 1) {
-
-                transform.position += direction * stats.MoveSpeed * Time.deltaTime;
+                transform.position += transform.forward * stats.MoveSpeed * Time.deltaTime;
             } else if (distance <= 1) {
                 Debug.Log($"Objeto ha llegado al objetivo. {distance}");
             }
@@ -44,12 +57,5 @@ public class AutomaticMovement : MonoBehaviour, IMovement {
 
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
-    }
-    public void UpdateCanMove(bool can) {
-        canMove = can;
-    }
-
-    public void UpdateStats(Stats stats) {
-        this.stats = stats.Movement;
     }
 }

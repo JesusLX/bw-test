@@ -68,9 +68,9 @@ public class Stats : ScriptableObject {
     [Serializable]
     public struct LevelST {
 
-        [SerializeField] private float level;
+        [SerializeField] private int level;
         [SerializeField] private float experience;
-        public float Level { get => level; set => level = value; }
+        public int Level { get => level; set => level = value; }
         public float Experience { get => experience; set => experience = value; }
         public static Stats.LevelST operator +(Stats.LevelST a, Stats.LevelST b) {
             a.level += b.level;

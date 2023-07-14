@@ -1,14 +1,12 @@
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour, IMovement {
-    public Stats.MovementST stats;
+public class PlayerMovement : Movement {
 
     private IMovementInput input;
     private Rigidbody rb;
     private IGroundDetection groundDetection;
 
     private bool isGrounded = true;
-    private bool canMove = true;
 
     public GameObject groundDetectorGO;
 
@@ -30,25 +28,20 @@ public class PlayerMovement : MonoBehaviour, IMovement {
         TryMove();
     }
 
-    public void Init(ICharacter character) {
+    public override void Init(ICharacter character) {
         Stats stats = character.Stats;
         UpdateStats(stats);
         character.OnStatsChanged.AddListener(UpdateStats);
     }
 
-    public void UpdateStats(Stats stats) {
-        this.stats = stats.Movement;
-    }
+
 
     private void Jump() {
         rb.AddForce(Vector3.up * stats.JumpForce, ForceMode.Impulse);
     }
 
-    public void UpdateCanMove(bool can) {
-        canMove = can;
-    }
 
-    public void TryMove() {
+    public override void TryMove() {
         if (canMove && isGrounded) {
             Vector3 movement = input.GetMovementInput();
             movement *= stats.MoveSpeed;

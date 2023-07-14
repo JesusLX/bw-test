@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86fb128f1e2c48242aebcf9dc2ee8362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SpawnPSKey: lighting_dark
   DiePSKey: rat_die_explosion
   basicStats: {fileID: 11400000, guid: 30042ba3420183845a83cb686c231174, type: 2}
 --- !u!136 &1661205570674628134
@@ -61,9 +62,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.32
-  m_Height: 1.38
+  m_Height: 1.7175254
   m_Direction: 1
-  m_Center: {x: 0, y: 0.61, z: 0}
+  m_Center: {x: 0, y: 0.77876264, z: 0}
 --- !u!54 &5371771678386875400
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -92,6 +93,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89f1269fe611e114db5dc1dbc35f30b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stats:
+    moveSpeed: 0
+    jumpForce: 0
+  canMove: 0
   rotationSpeed: 2
 --- !u!1001 &1911669046440184531
 PrefabInstance:
@@ -110,7 +115,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 106b34697eaa32345a94fb02cc7a871f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.657
+      value: 1.18
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 106b34697eaa32345a94fb02cc7a871f, type: 3}
       propertyPath: m_LocalPosition.z

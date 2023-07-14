@@ -19,7 +19,7 @@ MonoBehaviour:
     moveSpeed: 5
     jumpForce: 5
   Attack:
-    damage: 1
+    damage: 3
     rafaga: 1
     rafagaCountdown: 0.1
     shootCountdown: 1

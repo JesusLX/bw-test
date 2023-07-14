@@ -16,7 +16,7 @@ MonoBehaviour:
     maxHealth: 0
     currentHealth: 0
   Movement:
-    moveSpeed: 5
+    moveSpeed: 1
     jumpForce: 0
   Attack:
     damage: 0

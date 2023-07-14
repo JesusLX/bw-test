@@ -164,8 +164,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileKey: projectile_basic
-  shootPosition: {fileID: 6760505857682197968}
-  canShoot: 1
+  attackStartPosition: {fileID: 6760505857682197968}
+  canAttack: 1
   stats:
     damage: 0
     rafaga: 0

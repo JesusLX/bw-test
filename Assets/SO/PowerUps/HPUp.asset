@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f7a3755ed89d6844ae51baaa0b39748, type: 3}
   m_Name: HPUp
   m_EditorClassIdentifier: 
-  stat: {fileID: 11400000, guid: 8af77e66e8c19a047b0a06a9ee10e316, type: 2}
-  sprite: {fileID: 21300000, guid: 42272d0b429615b4cafb484352202c4b, type: 3}
-  description: "M\xE1s Velocidad"
+  stats: {fileID: 11400000, guid: 4fa0dd319d64f1743bebd979db7764c7, type: 2}
+  sprite: {fileID: 21300000, guid: ba2a463bb904bd548a98e85fd364cc54, type: 3}
+  title: "M\xE1s vida"
+  description: Vida +5
   isReutilizable: 1

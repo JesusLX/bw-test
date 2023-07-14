@@ -5,7 +5,7 @@ using System.Collections;
 using UnityEngine;
 namespace bw_test.Projectile {
 
-    public class Projectile : PoolItem, IProjectile {
+    public class Projectile : PoolItem, IMunition {
 
         public string ExplosionPSKey;
 

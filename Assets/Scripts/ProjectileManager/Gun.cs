@@ -5,21 +5,11 @@ using UnityEngine;
 using static UnityEditor.Experimental.GraphView.GraphView;
 using static UnityEngine.GraphicsBuffer;
 
-public class Gun : MonoBehaviour, IWeapon {
-    private IShootInput mouseInput;
-    public string projectileKey;
-    public Transform shootPosition;
-    public bool canShoot = true;
-    public Stats.AttackST stats;
-
-    private Coroutine shootCor;
-
+public class Gun : Weapon {
     private ShakeObject recoil;
 
-    private ICharacter shooter;
-
     private void Start() {
-        mouseInput = GetComponent<IShootInput>();
+        actionInput = GetComponent<IShootInput>();
         recoil = GetComponent<ShakeObject>();
     }
 
@@ -27,34 +17,24 @@ public class Gun : MonoBehaviour, IWeapon {
         TryAttack();
     }
 
-    public void Init(Player player) {
-        player.OnStatsChanged.AddListener(UpdateStats);
-        UpdateStats(player.Stats);
-        shooter = player;
-
-    }
-    public void UpdateStats(Stats stats) {
-        this.stats = stats.Attack;
-    }
-
-    public bool TryAttack() {
-        if (mouseInput.ShootButtonPressed()) {
-            if (shootCor == null) {
-                shootCor = StartCoroutine(ShootCor());
+    public override bool TryAttack() {
+        if (actionInput.ShootButtonPressed()) {
+            if (attackCor == null) {
+                attackCor = StartCoroutine(AttackCor());
             }
         }
         return true;
     }
-    public void Shoot() {
+    public override void Attack() {
         recoil.Fire();
-        var projectile = ProjectileManager.instance.Play(projectileKey, null, stats.ApplyShootMargenError(shootPosition.position), shootPosition.rotation, stats.Damage);
-        projectile.SetShooter(shooter);
+        var projectile = ProjectileManager.instance.Play(projectileKey, null, stats.ApplyShootMargenError(attackStartPosition.position), attackStartPosition.rotation, stats.Damage);
+        projectile.SetShooter(attacker);
     }
-    private IEnumerator ShootCor() {
-        if (canShoot) {
+    internal override IEnumerator AttackCor() {
+        if (canAttack) {
             for (int i = 0; i < stats.Rafaga; i++) {
-                if (canShoot) {
-                    Shoot();
+                if (canAttack) {
+                    Attack();
                 } else {
                     break;
                 }
@@ -64,7 +44,7 @@ public class Gun : MonoBehaviour, IWeapon {
             }
             yield return new WaitForSeconds(stats.ShootCountdown);
         }
-        shootCor = null;
+        attackCor = null;
 
     }
 }

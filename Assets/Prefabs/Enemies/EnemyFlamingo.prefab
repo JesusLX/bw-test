@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7118928354096317634}
   - component: {fileID: 7118928354096317635}
-  - component: {fileID: 1661205570674628134}
   - component: {fileID: 5371771678386875400}
   - component: {fileID: -5373719698447332322}
+  - component: {fileID: 2533054487015498301}
   m_Layer: 7
   m_Name: EnemyFlamingo
   m_TagString: Untagged
@@ -48,22 +48,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86fb128f1e2c48242aebcf9dc2ee8362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SpawnPSKey: lighting_dark
   DiePSKey: rat_die_explosion
   basicStats: {fileID: 11400000, guid: fc0dcafdd0565354eaf22babb06d47cb, type: 2}
---- !u!136 &1661205570674628134
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7118928354096317645}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.32
-  m_Height: 1.38
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.61, z: 0}
 --- !u!54 &5371771678386875400
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -92,7 +79,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89f1269fe611e114db5dc1dbc35f30b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stats:
+    moveSpeed: 0
+    jumpForce: 0
+  canMove: 0
   rotationSpeed: 2
+--- !u!65 &2533054487015498301
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7118928354096317645}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.4990986, y: 1.1653699, z: 0.71211433}
+  m_Center: {x: 0, y: 0.57398456, z: 0.11703946}
 --- !u!1001 &1497008278102917294
 PrefabInstance:
   m_ObjectHideFlags: 0

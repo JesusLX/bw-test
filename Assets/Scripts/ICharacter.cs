@@ -12,4 +12,6 @@ public interface ICharacter {
     void Die(ICharacter assasing);
      void Hit(float damage, ICharacter damagedBy);
     void AddExp(float experience);
+    void AddPowerUp(IPowerUp powerUp);
+    void UpdateStats(Stats stats);
 }

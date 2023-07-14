@@ -6,7 +6,8 @@ using UnityEngine;
 
 public class WaveManager : MonoBehaviour, ITimeAffected
 {
-    public Vector2 rajdomTimeBtSpawns;
+    public Vector2 initRandomTimeBtSpawns;
+    private Vector2 randomTimeBtSpawns;
     public Vector3 spawnZoneStart;
     public Vector3 spawnZoneEnd;
     Countdown spawnCountdown;
@@ -14,9 +15,18 @@ public class WaveManager : MonoBehaviour, ITimeAffected
 
     private void Start() {
     }
-
+    private void OnEnable() {
+        FindObjectOfType<LevelManager>().OnLevelUp.AddListener(LevelUp);
+        AttachTimeEvents();
+    }
+    private void OnDisable() {
+        FindObjectOfType<LevelManager>().OnLevelUp.RemoveListener(LevelUp);
+        DetachTimeEvents();
+    }
     [ContextMenu("Test/Init")]
     public void Init() {
+        randomTimeBtSpawns = initRandomTimeBtSpawns;
+        spawning = true;
         Spawn();
         StartCountdown();
     }
@@ -31,19 +41,43 @@ public class WaveManager : MonoBehaviour, ITimeAffected
     }
 
     public void StartCountdown() {
-        spawnCountdown = new Countdown(Random.Range(rajdomTimeBtSpawns.x, rajdomTimeBtSpawns.y));
+        spawnCountdown = new Countdown(Random.Range(randomTimeBtSpawns.x, randomTimeBtSpawns.y));
         spawnCountdown.OnTimeOut = (TimeOut);
         StartCoroutine(spawnCountdown.StartCountdown());
     }
 
-    #region ITimeAffected
-    public void TimeStops() {
-        spawnCountdown.StopCountdown();
+    public void LevelUp(int level) {
+        randomTimeBtSpawns.y -= 0.2f;
     }
-    public void TimeReanude() {
-        if(spawning) {
+
+    #region ITimeAffected
+    public void OnPlayTimeStarts() {
+        Init();
+    }
+
+    public void OnPlayTimeRestore() {
+        if (spawning) {
             StartCoroutine(spawnCountdown.StartCountdown());
         }
     }
+
+    public void OnPlayTimeStops() {
+        if(spawnCountdown != null) {
+        spawnCountdown.StopCountdown();
+        }
+    }
+
+    public void AttachTimeEvents() {
+        TimeManager.instance.OnPlayTimeStart.AddListener(OnPlayTimeStarts);
+        TimeManager.instance.OnPlayTimeStop.AddListener(OnPlayTimeStops);
+        TimeManager.instance.OnPlayTimeRestore.AddListener(OnPlayTimeRestore);
+    }
+
+    public void DetachTimeEvents() {
+        TimeManager.instance.OnPlayTimeStart.RemoveListener(OnPlayTimeStarts);
+        TimeManager.instance.OnPlayTimeStop.RemoveListener(OnPlayTimeStops);
+        TimeManager.instance.OnPlayTimeRestore.RemoveListener(OnPlayTimeRestore);
+    }
+
     #endregion
 }

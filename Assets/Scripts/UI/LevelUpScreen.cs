@@ -1,19 +1,21 @@
 using UnityEngine;
 
-public class LevelUpScreen : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-
+public class LevelUpScreen : MonoBehaviour, IUiScreen {
+    PowerUpsManager levelManager;
+    private void Awake() {
+        levelManager = FindObjectOfType<PowerUpsManager>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
+    #region IUiScreen
+    public void Show() {
+        gameObject.SetActive(true);
+        TimeManager.instance.StopPlayTime();
+        levelManager.LetsSelect();
     }
 
-    public void Show() => gameObject.SetActive(true);
-    public void Hide() => gameObject.SetActive(false);
+    public void Hide() {
+        TimeManager.instance.RestorePlayTime();
+        gameObject.SetActive(false);
+    }
+    #endregion
 }

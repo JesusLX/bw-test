@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GameOverScreen : MonoBehaviour
+public class GameOverScreen : MonoBehaviour, IUiScreen
 {
     // Start is called before the first frame update
     void Start()

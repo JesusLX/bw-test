@@ -8,6 +8,7 @@ public class LevelManager : MonoBehaviour
     private Player player;
     private float expNeeded = 10;
     private float levelUpMultiplier = 1.2f;
+    public UnityEvent<int> OnLevelUp;
 
     private void Start() {
         player = FindObjectOfType<Player>();
@@ -17,8 +18,9 @@ public class LevelManager : MonoBehaviour
         if(level.Experience >= expNeeded) {
             expNeeded += expNeeded * levelUpMultiplier;
             level.Level++;
-            PowerUpsManager.instance.LetsSelect();
-            WatchExperiende(level);
+            UIManager.instance.Show(UIManager.instance.LevelUpPanel);
+            OnLevelUp?.Invoke(level.Level);
+            //WatchExperiende(level);
         }
     }
 

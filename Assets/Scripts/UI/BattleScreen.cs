@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BattleScreen : MonoBehaviour
+public class BattleScreen : MonoBehaviour,IUiScreen
 {
     // Start is called before the first frame update
     void Start()

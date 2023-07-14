@@ -1,5 +1,5 @@
 ﻿namespace bw_test.ProjectilePool {
-    public interface IProjectile {
+    public interface IMunition {
         void SetDamage(float damage);
         void SetShooter(ICharacter shooter);
         public void Shoot();

@@ -1,19 +1,19 @@
 using UnityEngine;
 
-public class MainMenu : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
+public class MainMenu : MonoBehaviour, IUiScreen {
 
+
+    public void Play() {
+        Hide();
+        GameManager.instance.Play();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
+    public void Show() {
+        TimeManager.instance.StopPlayTime();
+        gameObject.SetActive(true);
     }
 
-    public void Show() => gameObject.SetActive(true);
-    public void Hide() => gameObject.SetActive(false);
+    public void Hide() {
+        gameObject.SetActive(false);
+    }
 }
