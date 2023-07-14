@@ -1,5 +1,5 @@
 ﻿public interface IWeapon {
-    void Init(Player player);
-    bool TryAttack();
+    void Init(ICharacter player);
+    void TryAttack();
     void UpdateCanAttack(bool can);
 }

@@ -9,14 +9,9 @@ public class AutomaticMovement : Movement {
 
     private ICharacter player;
     public float rotationSpeed = 2f;
-    private bool isTooClose;
+    private bool notTooClose;
     public UnityEvent OnPlayerTooClose;
-    private void OnEnable() {
-        StartCoroutine(TooCloseAlert());
-    }
-    private void OnDisable() {
-        StopCoroutine(TooCloseAlert());
-    }
+ 
     void Update() {
         TryMove();
     }
@@ -28,7 +23,7 @@ public class AutomaticMovement : Movement {
     }
     private IEnumerator TooCloseAlert() {
         while (true) {
-            if (isTooClose) {
+            if (!notTooClose) {
                 OnPlayerTooClose?.Invoke();
                 yield return null;
             } else {
@@ -41,10 +36,10 @@ public class AutomaticMovement : Movement {
             LookAt(player.Transform);
 
             float distance = Vector3.Distance(transform.position, player.Transform.position);
-            if (distance > 1) {
+            if (notTooClose = (distance > 1)) {
                 transform.position += transform.forward * stats.MoveSpeed * Time.deltaTime;
             } else if (distance <= 1) {
-                Debug.Log($"Objeto ha llegado al objetivo. {distance}");
+
             }
         }
     }
@@ -57,5 +52,13 @@ public class AutomaticMovement : Movement {
 
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
+    }
+    internal override void OnEnableEvents() {
+        base.OnEnableEvents();
+        StartCoroutine(TooCloseAlert());
+    }
+    internal override void OnDisableEvents() {
+        base.OnDisableEvents();
+        StopCoroutine(TooCloseAlert());
     }
 }

@@ -7,6 +7,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Gun : Weapon {
     private ShakeObject recoil;
+    public bool InUpdate = true;
 
     private void Start() {
         actionInput = GetComponent<IShootInput>();
@@ -14,23 +15,29 @@ public class Gun : Weapon {
     }
 
     private void Update() {
-        TryAttack();
+        if(InUpdate) {
+            TryAttack();
+        }
     }
 
-    public override bool TryAttack() {
+    public override void TryAttack() {
+
         if (actionInput.ShootButtonPressed()) {
             if (attackCor == null) {
+                Debug.Log("ATAAAACA");
                 attackCor = StartCoroutine(AttackCor());
             }
         }
-        return true;
     }
     public override void Attack() {
+        Debug.Log("boom");
+
         recoil.Fire();
         var projectile = ProjectileManager.instance.Play(projectileKey, null, stats.ApplyShootMargenError(attackStartPosition.position), attackStartPosition.rotation, stats.Damage);
         projectile.SetShooter(attacker);
     }
     internal override IEnumerator AttackCor() {
+            Debug.Log("Piuem "+stats.Rafaga+" "+ canAttack);
         if (canAttack) {
             for (int i = 0; i < stats.Rafaga; i++) {
                 if (canAttack) {

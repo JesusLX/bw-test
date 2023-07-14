@@ -9,7 +9,7 @@ public class PowerUpsManager : MonoBehaviour
     public List<PowerUpWidget> UIPowerUpCards = new List<PowerUpWidget>();
     public PowerUpWidget cardPrefab;
 
-    private void Awake() {
+    private void OnEnable() {
         if(powerUps.Count == 0) {
             powerUps.AddRange(powerUpBasics);
         }

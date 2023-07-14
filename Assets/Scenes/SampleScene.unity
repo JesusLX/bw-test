@@ -2979,6 +2979,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 91996af9fcc97ae489c8f8ab5b8c485b, type: 2}
   - {fileID: 11400000, guid: 08648d3a0af8adf4abbd365b895ff19d, type: 2}
   - {fileID: 11400000, guid: 2d93729d2ed8d764d8d1538050e143e2, type: 2}
+  - {fileID: 11400000, guid: 1941297bc44fc2b4da7d67d040600b88, type: 2}
   testId: mini_explosion
   testMultishootAtStart: 0
 --- !u!4 &1181073251
@@ -3862,6 +3863,7 @@ GameObject:
   - component: {fileID: 1646863127}
   - component: {fileID: 1646863128}
   - component: {fileID: 1646863129}
+  - component: {fileID: 1646863130}
   m_Layer: 0
   m_Name: GameSystem
   m_TagString: Untagged
@@ -3932,6 +3934,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f1a77397a454bb41ad70608a3955160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1646863130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646863125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b1727e654780b64096804666eeb02b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePools:
+  - {fileID: 11400000, guid: 2b6a9e7ece719334ab84f4b7bf369365, type: 2}
+  - {fileID: 11400000, guid: 7481f9c71f35c0f4088bafcd83edc921, type: 2}
+  testId: projectile_basic
+  testMultishootAtStart: 0
 --- !u!1001 &1664556850
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using bw_test.ParticlesPool;
 using bw_test.Pools;
 using System;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
@@ -16,29 +17,40 @@ public class Enemy : PoolItem, ICharacter {
      private Stats currentStats;
 
     public Stats Stats { get => currentStats; set => currentStats = value; }
-
-    public UnityEvent<Stats> OnStatsChanged { get; }
+    private UnityEvent<Stats> onStatsChanged = new UnityEvent<Stats>();
+    public UnityEvent<Stats> OnStatsChanged => onStatsChanged;
 
     public Transform Transform => this.transform;
 
     private IMovement movementController;
+    public List<IWeapon> weapons;
 
 
 
     void Start() {
+       
+        GetComponent<AutomaticMovement>().OnPlayerTooClose.AddListener(PlayerTooClose);
+        
     }
 
 
     public void Init() {
-        movementController = GetComponent<IMovement>();
-
-        movementController.Init(FindObjectOfType<Player>());
         Stats = ScriptableObject.CreateInstance<Stats>() + basicStats;
+
+        movementController = GetComponent<IMovement>();
+        movementController.Init(FindObjectOfType<Player>());
+
+        weapons = new List<IWeapon>(GetComponentsInChildren<IWeapon>());
+        foreach (var weapon in weapons) {
+            AddWeapon(weapon);
+        }
+
         PSManager.instance.Play(SpawnPSKey, null, transform.position, Quaternion.LookRotation(Vector3.up));
 
     }
 
     public void AddWeapon(IWeapon weapon) {
+        weapon.Init(this);
     }
 
     public void Hit(float damage, ICharacter damagedTo) {
@@ -70,5 +82,9 @@ public class Enemy : PoolItem, ICharacter {
     public void UpdateStats(Stats stats) {
         this.Stats += stats;
         OnStatsChanged?.Invoke(this.Stats);
+    }
+
+    public void PlayerTooClose() {
+        weapons.ForEach(x =>x.TryAttack());
     }
 }

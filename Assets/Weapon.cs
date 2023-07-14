@@ -26,7 +26,7 @@ public class Weapon : MonoBehaviour, IWeapon, ITimeAffected {
         DetachTimeEvents();
     }
 
-    virtual public void Init(Player player) {
+    virtual public void Init(ICharacter player) {
         player.OnStatsChanged.AddListener(UpdateStats);
         UpdateStats(player.Stats);
         attacker = player;
@@ -36,13 +36,13 @@ public class Weapon : MonoBehaviour, IWeapon, ITimeAffected {
         this.stats = stats.Attack;
     }
 
-    virtual public bool TryAttack() {
+    virtual public void TryAttack() {
+
         if (actionInput.ShootButtonPressed()) {
             if (attackCor == null) {
                 attackCor = StartCoroutine(AttackCor());
             }
         }
-        return true;
     }
     virtual public void Attack() {
         var projectile = ProjectileManager.instance.Play(projectileKey, null, stats.ApplyShootMargenError(attackStartPosition.position), attackStartPosition.rotation, stats.Damage);
@@ -50,6 +50,7 @@ public class Weapon : MonoBehaviour, IWeapon, ITimeAffected {
     }
     virtual internal IEnumerator AttackCor() {
         if (canAttack) {
+
             for (int i = 0; i < stats.Rafaga; i++) {
                 if (canAttack) {
                     Attack();

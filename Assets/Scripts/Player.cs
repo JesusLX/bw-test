@@ -31,7 +31,7 @@ public class Player : MonoBehaviour, ICharacter, ITimeAffected {
         Stats = ScriptableObject.CreateInstance<Stats>() + basicStats;
         weapons = new HashSet<IWeapon>(GetComponentsInChildren<IWeapon>());
         foreach (var weapon in weapons) {
-            weapon.Init(this);
+            AddWeapon(weapon);
         }
         GetComponent<IMovement>().Init(this);
     }
@@ -42,6 +42,7 @@ public class Player : MonoBehaviour, ICharacter, ITimeAffected {
     }
 
     public void Hit(float damage, ICharacter assasing) {
+        Debug.Log("DUELEEEE");
         Stats.Health.CurrentHealth -= damage;
         if (Stats.Health.CurrentHealth <= 0) {
             Die(assasing);

@@ -108,7 +108,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6760505857581150412}
-  - component: {fileID: 6760505857581150413}
   - component: {fileID: 6760505857581150414}
   - component: {fileID: 6760505857581150415}
   - component: {fileID: 6760505857581150409}
@@ -126,7 +125,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6760505857581150402}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.29, y: -0.28, z: 0.42}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1.18}
   m_ConstrainProportionsScale: 0
@@ -135,22 +134,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6760505857581150413
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6760505857581150402}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b1727e654780b64096804666eeb02b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectilePools:
-  - {fileID: 11400000, guid: 2b6a9e7ece719334ab84f4b7bf369365, type: 2}
-  testId: projectile_basic
-  testMultishootAtStart: 0
 --- !u!114 &6760505857581150414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,6 +155,7 @@ MonoBehaviour:
     rafagaCountdown: 0
     shootCountdown: 0
     shootMargenError: {x: 0, y: 0, z: 0}
+  InUpdate: 1
 --- !u!114 &6760505857581150415
 MonoBehaviour:
   m_ObjectHideFlags: 0

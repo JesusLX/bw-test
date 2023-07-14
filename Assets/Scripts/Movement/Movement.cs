@@ -10,10 +10,10 @@ public class Movement : MonoBehaviour, IMovement, ITimeAffected {
     [SerializeField] internal bool canMove = false;
 
     private void OnEnable() {
-        AttachTimeEvents();
+        OnEnableEvents();
     }
     private void OnDisable() {
-        DetachTimeEvents();
+        OnDisableEvents();
     }
 
   
@@ -32,6 +32,14 @@ public class Movement : MonoBehaviour, IMovement, ITimeAffected {
 
     virtual public void UpdateStats(Stats stats) {
         this.stats = stats.Movement;
+    }
+
+    internal virtual void OnEnableEvents() {
+        AttachTimeEvents();
+
+    }
+    internal virtual void OnDisableEvents() {
+        DetachTimeEvents();
     }
 
     #region ITimeAffected
