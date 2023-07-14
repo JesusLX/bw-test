@@ -580,6 +580,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 237910532}
+  - component: {fileID: 237910534}
   - component: {fileID: 237910533}
   m_Layer: 5
   m_Name: BattleScreen
@@ -625,6 +626,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hpWidget: {fileID: 1996848564}
   countdownWidget: {fileID: 1754974252}
+--- !u!222 &237910534
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237910531}
+  m_CullTransparentMesh: 1
 --- !u!1 &242814045
 GameObject:
   m_ObjectHideFlags: 0
@@ -951,11 +960,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 251806191198833822, guid: 232c444642fb75247b29fcbe87875392, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 335.5
+      value: 394
       objectReference: {fileID: 0}
     - target: {fileID: 251806191198833822, guid: 232c444642fb75247b29fcbe87875392, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -154.2344
+      value: -187.2344
       objectReference: {fileID: 0}
     - target: {fileID: 251806191198833822, guid: 232c444642fb75247b29fcbe87875392, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1682,19 +1691,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 511845611}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1150964530}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &511845611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3293,7 +3290,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1150964527
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3366,6 +3363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbd0de42599039546bdd495a45a87c34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playButton: {fileID: 511845610}
 --- !u!1 &1158842267
 GameObject:
   m_ObjectHideFlags: 0
@@ -4495,9 +4493,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1646863126}
+  - component: {fileID: 1646863129}
   - component: {fileID: 1646863127}
   - component: {fileID: 1646863128}
-  - component: {fileID: 1646863129}
   - component: {fileID: 1646863130}
   m_Layer: 0
   m_Name: GameSystem
@@ -5767,11 +5765,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 251806191198833822, guid: 232c444642fb75247b29fcbe87875392, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 501
+      value: 559.5
       objectReference: {fileID: 0}
     - target: {fileID: 251806191198833822, guid: 232c444642fb75247b29fcbe87875392, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -154.2344
+      value: -187.2344
       objectReference: {fileID: 0}
     - target: {fileID: 251806191198833822, guid: 232c444642fb75247b29fcbe87875392, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5880,11 +5878,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 251806191198833822, guid: 232c444642fb75247b29fcbe87875392, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 170
+      value: 228.5
       objectReference: {fileID: 0}
     - target: {fileID: 251806191198833822, guid: 232c444642fb75247b29fcbe87875392, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -154.2344
+      value: -187.2344
       objectReference: {fileID: 0}
     - target: {fileID: 251806191198833822, guid: 232c444642fb75247b29fcbe87875392, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
