@@ -590,7 +590,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.40945974, y: 0.25624686}
   m_AnchorMax: {x: 0.61054033, y: 0.38750628}
-  m_AnchoredPosition: {x: -62.86399, y: 1.5000038}
+  m_AnchoredPosition: {x: -62.86399, y: 1.5000076}
   m_SizeDelta: {x: 55.093002, y: 8.509199}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &219721249
@@ -3930,6 +3930,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0275d382aba04744b762a2d4547739c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1141347902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141347884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d19a4729a2f47f341883943b3defd908, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnLevelUp:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1146422066
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5714,7 +5729,6 @@ GameObject:
   - component: {fileID: 1646863126}
   - component: {fileID: 1646863129}
   - component: {fileID: 1646863127}
-  - component: {fileID: 1646863128}
   - component: {fileID: 1646863130}
   - component: {fileID: 1646863131}
   m_Layer: 0
@@ -5758,21 +5772,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnPlayTimeRestore:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &1646863128
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1646863125}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d19a4729a2f47f341883943b3defd908, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnLevelUp:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1646863129
@@ -5822,10 +5821,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f2ea7dc7b7dc2248b40cdb7eda0aab7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesKilled: 0
-  playerKilled: 0
-  playerWins: 0
-  timePlayed: 0
 --- !u!1001 &1664556850
 PrefabInstance:
   m_ObjectHideFlags: 0
