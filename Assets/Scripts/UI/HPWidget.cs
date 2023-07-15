@@ -22,7 +22,6 @@ public class HPWidget : MonoBehaviour {
 
     }
     private void OnDisable() {
-        FindObjectOfType<Player>().OnStatsChanged.RemoveListener(OnStatsChange);
 
     }
     public void Init() {

@@ -13,7 +13,8 @@ public class StatisticsManager : Singleton<StatisticsManager> {
         Player player = FindObjectOfType<Player>();
         player.OnEnemyKilled.AddListener(OnEnemyKilled);
         player.OnDie.AddListener(OnPlayerKilled);
-        FindObjectOfType<CountdownWidget>().OnCountDownStops.AddListener(SetTimePlayed);
+        GameManager.instance.OnGameStart.AddListener(Init);
+        GameManager.instance.OnGameOver.AddListener(WatchTime);
 
     }
 
@@ -33,6 +34,9 @@ public class StatisticsManager : Singleton<StatisticsManager> {
         playerWins++;
     }
 
+    public void WatchTime() {
+        SetTimePlayed(CountdownWidget.instance.CurrentTime);
+    } 
     public void SetTimePlayed(float timePlayed) {
         this.timePlayed = (int)timePlayed;
     }

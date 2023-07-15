@@ -28,6 +28,7 @@ public class WaveManager : MonoBehaviour, ITimeAffected
     }
     [ContextMenu("Test/Init")]
     public void Init() {
+        new List<Enemy>(FindObjectsOfType<Enemy>()).ForEach(e => e.Kill());
         randomTimeBtSpawns = initRandomTimeBtSpawns;
         spawning = true;
         Spawn();

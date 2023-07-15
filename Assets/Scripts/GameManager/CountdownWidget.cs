@@ -7,27 +7,42 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.PlayerLoop;
 
-public class CountdownWidget : MonoBehaviour {
+public class CountdownWidget : Singleton<CountdownWidget> {
     public int maxTime = 60;
+    private int currentTime = 60;
     Countdown countdown;
+    Coroutine coroutineCD;
     public UnityEvent<float> OnCountDownStops = new();
 
     public TextMeshProUGUI counter;
 
+    public int CurrentTime { get => currentTime; set => currentTime = value; }
+
     public void StartCountdown() {
-        Debug.Log("AYUDAAAAAA");
+        CurrentTime = maxTime;
         countdown = new Countdown(maxTime);
         countdown.OnTimeOut = (TimeOut);
         countdown.OnTimeUpdate = (TimeUpdate);
-        StartCoroutine(countdown.StartCountdown());
+        if(coroutineCD != null) {
+            StopCoroutine(coroutineCD);
+        }
+        coroutineCD = StartCoroutine(countdown.StartCountdown());
     }
 
     public void TimeUpdate(float time) {
-        counter.text = ((int)time).ToString();
+        CurrentTime = (int)time;
+        counter.text = (CurrentTime).ToString();
     }
     public void TimeOut() {
         OnCountDownStops?.Invoke(countdown.GetRemainingTime());
         GameManager.instance.WinGame();
+    }
+    public void RestoreCountdown() {
+        Debug.Log("Contador " + countdown);
+        if (countdown != null) {
+            coroutineCD = StartCoroutine(countdown.StartCountdown());
+
+        }
     }
     public void StopCounting() {
         if (countdown != null) {

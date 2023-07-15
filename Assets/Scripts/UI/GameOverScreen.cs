@@ -1,19 +1,16 @@
+using TMPro;
 using UnityEngine;
 
 public class GameOverScreen : MonoBehaviour, IUiScreen
 {
-    // Start is called before the first frame update
-    void Start()
-    {
+    public TextMeshProUGUI seconds;
+    public TextMeshProUGUI enemies;
 
+    public void Show() {
+        gameObject.SetActive(true);
+        seconds.text = StatisticsManager.instance.timePlayed.ToString();
+        enemies.text = StatisticsManager.instance.enemiesKilled.ToString();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    public void Show() => gameObject.SetActive(true);
     public void Hide() => gameObject.SetActive(false);
 }

@@ -32,6 +32,7 @@ public class Player : MonoBehaviour, ICharacter, ITimeAffected {
     }
 
     public void Init() {
+        transform.rotation = Quaternion.identity;
         Stats = ScriptableObject.CreateInstance<Stats>() ;
         UpdateStats(basicStats);
         weapons = new HashSet<IWeapon>(GetComponentsInChildren<IWeapon>());
@@ -65,6 +66,7 @@ public class Player : MonoBehaviour, ICharacter, ITimeAffected {
     public void AddExp(float experience) {
         OnEnemyKilled?.Invoke();
         Stats.Level.Experience += experience;
+        Debug.Log("Exp " + Stats.Level.Experience);
         OnExperienceChanged?.Invoke(Stats.Level);
     }
 
