@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 8af77e66e8c19a047b0a06a9ee10e316, type: 2}
   sprite: {fileID: 21300000, guid: 42272d0b429615b4cafb484352202c4b, type: 3}
-  title: 
-  description: "M\xE1s Velocidad"
+  title: Veloz
+  description: "Te mueves mas r\xE1pido"
   isReutilizable: 1

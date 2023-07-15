@@ -38,7 +38,7 @@ namespace bw_test.Managers {
         /// Check CountdowWidget and get the current time of the countdown
         /// </summary>
         public void WatchTime() {
-            SetTimePlayed(CountdownWidget.instance.CurrentTime);
+            SetTimePlayed(CountdownWidget.instance.GetTimePlayed());
         }
         public void SetTimePlayed(float timePlayed) {
             this.timePlayed = (int)timePlayed;

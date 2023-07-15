@@ -22,7 +22,7 @@ MonoBehaviour:
     damage: 0
     rafaga: 0
     rafagaCountdown: 0
-    shootCountdown: -0.05
+    shootCountdown: -0.15
     shootMargenError: {x: 0, y: 0, z: 0}
   Level:
     level: 0

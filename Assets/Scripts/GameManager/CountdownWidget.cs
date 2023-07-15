@@ -36,6 +36,10 @@ namespace bw_test.UIScreen.UIWidgets {
             counter.text = (CurrentTime).ToString();
         }
 
+        public float GetTimePlayed() {
+            return maxTime - CurrentTime;
+        }
+
         /// <summary>
         /// Send OnCountDownStops event and winGame
         /// </summary>
