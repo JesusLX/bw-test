@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
-public interface IRotationInput {
-    Vector2 GetRotationInput();
+namespace bw_test.Inputs {
+	public interface IRotationInput {
+		Vector2 GetRotationInput();
+	}
+
 }

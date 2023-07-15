@@ -1,21 +1,41 @@
-using System.Collections;
-using System.Collections.Generic;
+using bw_test.Characters;
+using bw_test.Managers;
+using bw_test.ST;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ExpWidget : MonoBehaviour
-{
-    public Slider expSlider;
+namespace bw_test.UIScreen.UIWidgets {
+    public class ExpWidget : MonoBehaviour, IWidget {
+        public Slider expSlider;
 
-    private void Start() {
-        FindObjectOfType<Player>().OnExperienceChanged.AddListener(UpdateExperience);
-    }
+        private void Start() {
+            FindObjectOfType<Player>().OnExperienceChanged.AddListener(UpdateExperience);
+            FindObjectOfType<LevelManager>().OnLevelUp.AddListener(UpdateExperience);
+        }
 
-    public void Init() {
-        expSlider.value = 0;
-    }
+        /// <summary>
+        /// Uptade the slider with the level stats
+        /// </summary>
+        /// <param name="levelST">Level stats to get the values</param>
+        public void UpdateExperience(Stats.LevelST levelST) {
+            Debug.Log("Actualizandoooo"+ levelST.Experience+ " / "+FindObjectOfType<LevelManager>().ExpNeeded);
+            float exp = 0;
+            if (levelST.Experience != 0) {
+                exp = levelST.Experience / FindObjectOfType<LevelManager>().ExpNeeded;
+            }
+            expSlider.value = exp;
+        }
 
-    public void UpdateExperience(Stats.LevelST levelST) {
-        expSlider.value = levelST.Experience / FindObjectOfType<LevelManager>().ExpNeeded;
+        #region IWidget
+        public void Init() {
+            expSlider.value = 0;
+        }
+
+        public void Show() {
+        }
+
+        public void Hide() {
+        }
+        #endregion
     }
 }

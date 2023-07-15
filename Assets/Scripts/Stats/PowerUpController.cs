@@ -1,16 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
+using bw_test.Characters;
+using bw_test.PowerUps;
 using UnityEngine;
 
-public class PowerUpController : MonoBehaviour
-{
-    ICharacter character;
+namespace bw_test.Controllers {
+    public class PowerUpController : MonoBehaviour {
+        ICharacter character;
 
-    private void Start() {
-        character = GetComponent<ICharacter>();
-    }
-    public void AddPowerUp(IPowerUp powerUp) {
-        character.UpdateStats(powerUp.Stats);
+        private void Start() {
+            character = GetComponent<ICharacter>();
+        }
+        public void AddPowerUp(IPowerUp powerUp) {
+            character.UpdateStats(powerUp.Stats);
 
-    }
+        }
+    } 
 }

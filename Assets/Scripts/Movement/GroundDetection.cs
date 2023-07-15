@@ -1,12 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class GroundDetection : MonoBehaviour, IGroundDetection {
-    public Transform groundCheck;
-    public LayerMask groundLayer;
-    public float groundCheckRadius = 0.2f;
-    public bool IsGrounded() {
-        return Physics.CheckSphere(groundCheck.position, groundCheckRadius, groundLayer);
-    }
+namespace bw_test.Detector {
+    public class GroundDetection : MonoBehaviour, IGroundDetection {
+        public Transform groundCheck;
+        public LayerMask groundLayer;
+        public float groundCheckRadius = 0.2f;
+
+        /// <summary>
+        /// Use phisics to check if is touchin the ground
+        /// </summary>
+        /// <returns></returns>
+        public bool IsGrounded() {
+            return Physics.CheckSphere(groundCheck.position, groundCheckRadius, groundLayer);
+        }
+    } 
 }

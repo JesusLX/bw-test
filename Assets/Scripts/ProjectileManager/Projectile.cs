@@ -1,10 +1,11 @@
+using bw_test.Characters;
 using bw_test.ParticlesPool;
 using bw_test.Pools;
 using bw_test.ProjectilePool;
 using System.Collections;
 using UnityEngine;
-namespace bw_test.Projectile {
 
+namespace bw_test.Projectile {
     public class Projectile : PoolItem, IMunition {
 
         public string ExplosionPSKey;

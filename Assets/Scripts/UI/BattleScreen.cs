@@ -1,26 +1,40 @@
+using bw_test.Managers;
+using bw_test.UIScreen.UIWidgets;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class BattleScreen : MonoBehaviour, IUiScreen {
+namespace bw_test.UIScreen {
+    public class BattleScreen : MonoBehaviour, IUiScreen {
 
-    public HPWidget hpWidget;
-    public CountdownWidget countdownWidget;
-    public ExpWidget expWidget;
+        List<IWidget> widgets = new();
 
+        private void Start() {
+        }
 
-    public void Init() {
-        GameManager.instance.OnGameStart.AddListener(Init);
-        hpWidget.Init();
-        countdownWidget.StartCountdown();
-        expWidget.Init();
-    }
+        public void Init() {
 
-    public void Show() {
-        gameObject.SetActive(true);
-        countdownWidget.RestoreCountdown();
-    }
+            GameManager.instance.OnGameStart.AddListener(Init);
+            GetWidgets();
 
-    public void Hide() {
-        countdownWidget.StopCounting();
-        gameObject.SetActive(false);
+            widgets.ForEach(x => {
+                x.Init();
+                });
+        }
+
+        public void GetWidgets() {
+            widgets = new List<IWidget>(GetComponentsInChildren<IWidget>());
+        }
+
+        public void Show() {
+
+            gameObject.SetActive(true);
+            widgets.ForEach(x => x.Show());
+        }
+
+        public void Hide() {
+
+            widgets.ForEach(x => x.Hide());
+            gameObject.SetActive(false);
+        }
     }
 }

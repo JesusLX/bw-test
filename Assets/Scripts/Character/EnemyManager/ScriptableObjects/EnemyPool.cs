@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using bw_test.Pools;
+using bw_test.Characters;
 
 namespace bw_test.EnemyPool {
 

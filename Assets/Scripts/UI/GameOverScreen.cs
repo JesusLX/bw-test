@@ -1,16 +1,19 @@
+using bw_test.Managers;
 using TMPro;
 using UnityEngine;
 
-public class GameOverScreen : MonoBehaviour, IUiScreen
-{
-    public TextMeshProUGUI seconds;
-    public TextMeshProUGUI enemies;
+namespace bw_test.UIScreen {
+    public class GameOverScreen : MonoBehaviour, IUiScreen {
+        public TextMeshProUGUI seconds;
+        public TextMeshProUGUI enemies;
 
-    public void Show() {
-        gameObject.SetActive(true);
-        seconds.text = StatisticsManager.instance.timePlayed.ToString();
-        enemies.text = StatisticsManager.instance.enemiesKilled.ToString();
+        public void Show() {
+            gameObject.SetActive(true);
+            seconds.text = StatisticsManager.instance.timePlayed.ToString();
+            enemies.text = StatisticsManager.instance.enemiesKilled.ToString();
+        }
+
+        public void Hide() => gameObject.SetActive(false);
     }
 
-    public void Hide() => gameObject.SetActive(false);
 }
