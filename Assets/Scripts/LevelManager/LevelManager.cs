@@ -14,7 +14,7 @@ namespace bw_test.Managers {
         public float ExpNeeded { get => expNeeded; set => expNeeded = value; }
 
         private void Start() {
-            player = FindObjectOfType<Player>();
+            player = GetComponent<Player>();
             player.OnExperienceChanged.AddListener(WatchExperiende);
             GameManager.instance.OnGameStart.AddListener(Init);
         }

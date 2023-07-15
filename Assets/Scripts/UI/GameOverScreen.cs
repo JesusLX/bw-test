@@ -9,8 +9,8 @@ namespace bw_test.UIScreen {
 
         public void Show() {
             gameObject.SetActive(true);
-            seconds.text = StatisticsManager.instance.timePlayed.ToString();
-            enemies.text = StatisticsManager.instance.enemiesKilled.ToString();
+            seconds.text = StatisticsManager.instance.TimePlayed.ToString();
+            enemies.text = StatisticsManager.instance.EnemiesKilled.ToString();
         }
 
         public void Hide() => gameObject.SetActive(false);
