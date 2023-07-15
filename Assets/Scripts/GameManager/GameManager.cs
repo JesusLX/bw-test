@@ -11,22 +11,23 @@ namespace bw_test.Managers {
         public UnityEvent OnGameStart = new();
         public UnityEvent OnGameOver = new();
         private void Start() {
-            UIManager.instance.Hide(UIManager.instance.GameOverPanel);
-            UIManager.instance.Show(UIManager.instance.MainMenuPanel);
-            UIManager.instance.Hide(UIManager.instance.LevelUpPanel);
-            UIManager.instance.Hide(UIManager.instance.BattleScreenPanel);
+            MainMenu();
         }
 
+        /// <summary>
+        /// Prepare the Canvas for the MainMenu and stops the game
+        /// </summary>
+        public void MainMenu() {
+            UIManager.instance.MainMenu();
+            TimeManager.instance.StopPlayTime();
+        }
+               
         /// <summary>
         /// Prepare the Canvas and start the game
         /// </summary>
         public void Play() {
-            UIManager.instance.Hide(UIManager.instance.GameOverPanel);
-            UIManager.instance.Hide(UIManager.instance.MainMenuPanel);
-            UIManager.instance.Hide(UIManager.instance.LevelUpPanel);
-            UIManager.instance.Show(UIManager.instance.BattleScreenPanel);
+            UIManager.instance.PlayMenu();
             OnGameStart?.Invoke();
-
             UIManager.instance.BattleScreenPanel.Init();
         }
 
@@ -34,10 +35,7 @@ namespace bw_test.Managers {
         /// Prepare the Canvas and restore the game
         /// </summary>
         public void Restore() {
-            UIManager.instance.Hide(UIManager.instance.GameOverPanel);
-            UIManager.instance.Hide(UIManager.instance.MainMenuPanel);
-            UIManager.instance.Hide(UIManager.instance.LevelUpPanel);
-            UIManager.instance.Show(UIManager.instance.BattleScreenPanel);
+            UIManager.instance.PlayMenu();
             TimeManager.instance.RestorePlayTime();
         }
 
@@ -46,10 +44,7 @@ namespace bw_test.Managers {
         /// </summary>
         public void LevelUpTime() {
             TimeManager.instance.StopPlayTime();
-            UIManager.instance.Hide(UIManager.instance.BattleScreenPanel);
-            UIManager.instance.Show(UIManager.instance.LevelUpPanel);
-            UIManager.instance.Hide(UIManager.instance.MainMenuPanel);
-            UIManager.instance.Hide(UIManager.instance.GameOverPanel);
+            UIManager.instance.LevelUpMenu();
         }
 
         /// <summary>
@@ -58,10 +53,7 @@ namespace bw_test.Managers {
         public void WinGame() {
             TimeManager.instance.StopPlayTime();
             OnGameOver?.Invoke();
-            UIManager.instance.Hide(UIManager.instance.BattleScreenPanel);
-            UIManager.instance.Hide(UIManager.instance.LevelUpPanel);
-            UIManager.instance.Hide(UIManager.instance.MainMenuPanel);
-            UIManager.instance.Show(UIManager.instance.GameOverPanel);
+            UIManager.instance.GameOverMenu();
         }
 
 
@@ -71,10 +63,7 @@ namespace bw_test.Managers {
         public void GameOver() {
             TimeManager.instance.StopPlayTime();
             OnGameOver?.Invoke();
-            UIManager.instance.Hide(UIManager.instance.BattleScreenPanel);
-            UIManager.instance.Hide(UIManager.instance.LevelUpPanel);
-            UIManager.instance.Hide(UIManager.instance.MainMenuPanel);
-            UIManager.instance.Show(UIManager.instance.GameOverPanel);
+            UIManager.instance.GameOverMenu();
         }
     }
 }
