@@ -74,7 +74,6 @@ namespace bw_test.Characters {
         public void AddExp(float experience) {
             OnEnemyKilled?.Invoke();
             Stats.Level.Experience += experience;
-            Debug.Log("Exp " + Stats.Level.Experience);
             OnExperienceChanged?.Invoke(Stats.Level);
         }
 
@@ -90,7 +89,6 @@ namespace bw_test.Characters {
 
         #region ITimeAffected
         public void OnPlayTimeStarts() {
-            Debug.Log("VAMOOOOOOOS");
             Init();
         }
 

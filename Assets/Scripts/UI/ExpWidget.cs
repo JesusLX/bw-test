@@ -18,7 +18,6 @@ namespace bw_test.UIScreen.UIWidgets {
         /// </summary>
         /// <param name="levelST">Level stats to get the values</param>
         public void UpdateExperience(Stats.LevelST levelST) {
-            Debug.Log("Actualizandoooo"+ levelST.Experience+ " / "+FindObjectOfType<LevelManager>().ExpNeeded);
             float exp = 0;
             if (levelST.Experience != 0) {
                 exp = levelST.Experience / FindObjectOfType<LevelManager>().ExpNeeded;

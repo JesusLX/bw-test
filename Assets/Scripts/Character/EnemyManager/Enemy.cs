@@ -64,7 +64,6 @@ namespace bw_test.Characters {
             if (Stats.Health.CurrentHealth <= 0) {
                 Die(damagedTo);
             }
-            Debug.Log(Stats.Health.CurrentHealth);
 
         }
 
@@ -73,7 +72,6 @@ namespace bw_test.Characters {
             assasing.AddExp(
                 Stats.Level.Experience
                 );
-            Debug.Log("MORIO");
             Kill();
         }
 
