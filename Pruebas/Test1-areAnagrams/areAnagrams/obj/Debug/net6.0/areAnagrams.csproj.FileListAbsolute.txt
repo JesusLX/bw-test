@@ -1,0 +1,15 @@
+D:\csharp\anagramChecker\areAnagrams\areAnagrams\bin\Debug\net6.0\areAnagrams.exe
+D:\csharp\anagramChecker\areAnagrams\areAnagrams\bin\Debug\net6.0\areAnagrams.deps.json
+D:\csharp\anagramChecker\areAnagrams\areAnagrams\bin\Debug\net6.0\areAnagrams.runtimeconfig.json
+D:\csharp\anagramChecker\areAnagrams\areAnagrams\bin\Debug\net6.0\areAnagrams.dll
+D:\csharp\anagramChecker\areAnagrams\areAnagrams\bin\Debug\net6.0\areAnagrams.pdb
+D:\csharp\anagramChecker\areAnagrams\areAnagrams\obj\Debug\net6.0\areAnagrams.csproj.AssemblyReference.cache
+D:\csharp\anagramChecker\areAnagrams\areAnagrams\obj\Debug\net6.0\areAnagrams.GeneratedMSBuildEditorConfig.editorconfig
+D:\csharp\anagramChecker\areAnagrams\areAnagrams\obj\Debug\net6.0\areAnagrams.AssemblyInfoInputs.cache
+D:\csharp\anagramChecker\areAnagrams\areAnagrams\obj\Debug\net6.0\areAnagrams.AssemblyInfo.cs
+D:\csharp\anagramChecker\areAnagrams\areAnagrams\obj\Debug\net6.0\areAnagrams.csproj.CoreCompileInputs.cache
+D:\csharp\anagramChecker\areAnagrams\areAnagrams\obj\Debug\net6.0\areAnagrams.dll
+D:\csharp\anagramChecker\areAnagrams\areAnagrams\obj\Debug\net6.0\refint\areAnagrams.dll
+D:\csharp\anagramChecker\areAnagrams\areAnagrams\obj\Debug\net6.0\areAnagrams.pdb
+D:\csharp\anagramChecker\areAnagrams\areAnagrams\obj\Debug\net6.0\areAnagrams.genruntimeconfig.cache
+D:\csharp\anagramChecker\areAnagrams\areAnagrams\obj\Debug\net6.0\ref\areAnagrams.dll

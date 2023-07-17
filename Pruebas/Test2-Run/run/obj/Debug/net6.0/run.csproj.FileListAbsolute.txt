@@ -1,0 +1,15 @@
+D:\csharp\anagramChecker\run\run\bin\Debug\net6.0\run.exe
+D:\csharp\anagramChecker\run\run\bin\Debug\net6.0\run.deps.json
+D:\csharp\anagramChecker\run\run\bin\Debug\net6.0\run.runtimeconfig.json
+D:\csharp\anagramChecker\run\run\bin\Debug\net6.0\run.dll
+D:\csharp\anagramChecker\run\run\bin\Debug\net6.0\run.pdb
+D:\csharp\anagramChecker\run\run\obj\Debug\net6.0\run.csproj.AssemblyReference.cache
+D:\csharp\anagramChecker\run\run\obj\Debug\net6.0\run.GeneratedMSBuildEditorConfig.editorconfig
+D:\csharp\anagramChecker\run\run\obj\Debug\net6.0\run.AssemblyInfoInputs.cache
+D:\csharp\anagramChecker\run\run\obj\Debug\net6.0\run.AssemblyInfo.cs
+D:\csharp\anagramChecker\run\run\obj\Debug\net6.0\run.csproj.CoreCompileInputs.cache
+D:\csharp\anagramChecker\run\run\obj\Debug\net6.0\run.dll
+D:\csharp\anagramChecker\run\run\obj\Debug\net6.0\refint\run.dll
+D:\csharp\anagramChecker\run\run\obj\Debug\net6.0\run.pdb
+D:\csharp\anagramChecker\run\run\obj\Debug\net6.0\run.genruntimeconfig.cache
+D:\csharp\anagramChecker\run\run\obj\Debug\net6.0\ref\run.dll
